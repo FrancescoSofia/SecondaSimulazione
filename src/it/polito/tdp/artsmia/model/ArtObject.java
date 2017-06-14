@@ -1,5 +1,7 @@
 package it.polito.tdp.artsmia.model;
 
+import java.util.Random;
+
 public class ArtObject {
 
 	private int objectId;
@@ -157,5 +159,6 @@ public class ArtObject {
 	public String toString() {
 		return "ArtObject [objectId=" + objectId + ", title=" + title + "]";
 	}
+
 
 }

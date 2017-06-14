@@ -124,6 +124,36 @@ public class ArtsmiaDAO {
 			}
 	}
 
+		public List<Exhibition> getMostrePerAnno2(int anno, ExhibitionIdMap exhibitionIdMap) {
+			String sql = "SELECT * from exhibitions WHERE begin= ? ";
+
+			List<Exhibition> result = new ArrayList<>();
+
+			Connection conn = DBConnect.getConnection();
+
+			try {
+				PreparedStatement st = conn.prepareStatement(sql);
+				st.setInt(1, anno);
+
+				ResultSet res = st.executeQuery();
+
+				while (res.next()) {
+					Exhibition mostra = new Exhibition(res.getInt("exhibition_id"),res.getString("exhibition_department"),
+							res.getString("exhibition_title"),res.getInt("begin"),res.getInt("end"));
+					mostra = exhibitionIdMap.put(mostra);
+					result.add(mostra);
+
+				}
+
+				conn.close();
+				return result;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
 
 
+
+			}
 }
