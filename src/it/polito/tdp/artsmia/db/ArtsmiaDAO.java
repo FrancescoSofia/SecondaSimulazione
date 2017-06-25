@@ -125,7 +125,9 @@ public class ArtsmiaDAO {
 	}
 
 		public List<Exhibition> getMostrePerAnno2(int anno, ExhibitionIdMap exhibitionIdMap) {
-			String sql = "SELECT * from exhibitions WHERE begin= ? ";
+			String sql = "SELECT e.exhibition_id, exhibition_department, exhibition_title, begin, end "
+					+ "FROM exhibitions e, exhibition_objects eo WHERE begin= ? && eo.exhibition_id = e.exhibition_id ";
+			//&& eo.exhibition_id =e.exhibition_id
 
 			List<Exhibition> result = new ArrayList<>();
 
@@ -142,7 +144,6 @@ public class ArtsmiaDAO {
 							res.getString("exhibition_title"),res.getInt("begin"),res.getInt("end"));
 					mostra = exhibitionIdMap.put(mostra);
 					result.add(mostra);
-
 				}
 
 				conn.close();

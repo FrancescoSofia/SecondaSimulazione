@@ -74,9 +74,10 @@ public class ArtsmiaController {
 			return;
 		}
     	model.creaGrafo(boxAnno.getValue());
-    	List<Studente> studenti = model.creaStudente(numero,boxAnno.getValue());
+    	List<Studente> studenti = model.creaStudente2(numero,boxAnno.getValue());
+    	//List<Studente> studenti = model.chiama(numero,boxAnno.getValue());
     	for(Studente s : studenti){
-    		txtResult.appendText(s.toString()+s.getOpere().size());
+    		txtResult.appendText(s.toString()+" Opere viste : "+s.getOpere().size()+"\n");
     	}
 
     }

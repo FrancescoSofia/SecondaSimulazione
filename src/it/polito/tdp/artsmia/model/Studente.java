@@ -1,6 +1,6 @@
 package it.polito.tdp.artsmia.model;
 
-import java.util.Map;
+import java.util.*;
 
 public class Studente implements Comparable<Studente> {
 
@@ -11,6 +11,7 @@ public class Studente implements Comparable<Studente> {
 	public Studente(int id) {
 		super();
 		this.id = id;
+		opere = new HashMap<Integer,ArtObject>();
 	}
 	public Map<Integer,ArtObject> getOpere() {
 		return opere;
